@@ -14,10 +14,12 @@ for imageName in os.listdir(path):
 
 # iteratly open files
 def loadImages():
-    images = []
-    for file_name in file_list:
+    images = {}
+    for file_path in file_list:
         try:
-            img = Image.open(file_name)
+            img = Image.open(file_path)
+            file_name_full = file_path.split("\\")[-1]
+            file_name = file_name_full.split(".")[0]
         except FileNotFoundError:
             print("file ont found")
             continue
@@ -26,7 +28,7 @@ def loadImages():
             img = torch.from_numpy(img)
             img = img.transpose(0, 2)
             img = img.transpose(1, 2)
-            images.append([file_name, img])
+            images[file_name] = img
     return images
 
 def loadLabels():
@@ -34,4 +36,4 @@ def loadLabels():
     print(labels)
 
 
-loadLabels()
+images = loadImages()
