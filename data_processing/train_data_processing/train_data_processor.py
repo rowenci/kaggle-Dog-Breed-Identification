@@ -33,7 +33,16 @@ def loadImages():
 
 def loadLabels():
     labels = pd.read_csv("D:\Codes\AI\kaggle\kaggle-Dog-Breed-Identification\datas\images\labels.csv")
-    print(labels)
+    labels["image"] = np.nan
+    return labels
 
 
 images = loadImages()
+labels = loadLabels()
+"""
+for idx in labels["id"]:
+    image_value = images[idx]
+    print(image_value)
+    labels.loc[labels["id"] == "000bec180eb18c7604dcecc8fe0dba07"]["image"] = image_value
+print(labels)
+"""
