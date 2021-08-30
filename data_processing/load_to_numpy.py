@@ -178,6 +178,7 @@ for breed in breeds:
     breeds_dict[breed] = idx
     idx += 1
 breeds_dict.popitem()
+# 按labels顺序来将breed变成对应的数字
 label_list = np.ndarray(10222)
 i = 0
 for i in range(10222):
